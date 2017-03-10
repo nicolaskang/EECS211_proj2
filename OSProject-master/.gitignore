@@ -1,0 +1,46 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+*/.DS_Store
+.metadata/*
+*/bin/*
+*/doc/*
+*/mips/*
+*/src/nachos/test/test*.coff
+
+proj3/OSTester
+proj3/build/*
+proj3/bin/*
+
+proj3/src/.DS_Store
+
+proj4/src/kvlib/kvlib_test.go
+
+proj4/src/kvlib/in.json
+
+proj4/src/kvlib/out.json
+
+proj3/.project
+
+proj3/.settings/com.googlecode.goclipse.core.prefs
+
+proj4/.project
+
+proj4/test/.DS_Store
+
+proj4/conf/settings _remote.conf
+
+proj4/conf/test_remote.conf
+
+proj4/test/.DS_Store
+
+proj4/test/.DS_Store

@@ -1,0 +1,21 @@
+start_server 1
+start_server 2
+start_server 3
+##
+Sleep 500
+Switch 1
+Put hello world
+Switch 2
+Get hello
+Switch 3
+Update hello good
+Put shut down
+Switch 1
+Delete hello
+Switch 3
+Get hello
+Sleep 500
+##
+stop_server 1
+stop_server 2
+stop_server 3
