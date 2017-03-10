@@ -46,28 +46,8 @@ public class Alarm {
 	 */
 	public void waitUntil(long x) {
 		// for now, cheat just to get something working (busy waiting is bad)
-		waitQueue.waitForAccess(KThread.currentThread());
-		if(KThread.currentThread() == waitQueue.nextThread())
-			WaitUntilUsingThread = KThread.currentThread();
-		while(WaitUntilUsingThread!=KThread.currentThread())
-			WaitCondition.sleep();
-		WaitCondition.wake();
-		waitlock.acquire();
 		long wakeTime = Machine.timer().getTime() + x;
-		while (wakeTime > Machine.timer().getTime()) WaitCondition.sleep();
-		WaitCondition.wake();
-		waitlock.release();
+		while (wakeTime > Machine.timer().getTime())
+			KThread.yield();
 	}
-	
-	private static Lock waitlock = new Lock();
-	private static KThread WaitUntilUsingThread =null;
-	private static Condition WaitCondition= new Condition(waitlock);
-	private static ThreadQueue waitQueue = ThreadedKernel.scheduler
-			.newThreadQueue(true);
-	
-	public static void selfTest() {
-		AlarmTest.runTest();
-	}
-
-	private static final char dbgAlarm = 'a';
 }

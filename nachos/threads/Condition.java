@@ -78,6 +78,7 @@ public class Condition {
 	 */
 	public void sleep() {
 		Lib.assertTrue(conditionLock.isHeldByCurrentThread());
+
 		Semaphore waiter = new Semaphore(0);
 		waitQueue.add(waiter);
 

@@ -1,7 +1,5 @@
 package nachos.threads;
 
-import java.util.LinkedList;
-
 import nachos.machine.*;
 
 /**
@@ -33,11 +31,9 @@ public class Condition2 {
 	 */
 	public void sleep() {
 		Lib.assertTrue(conditionLock.isHeldByCurrentThread());
-		Lock waiter = new Lock();
-		waitQueue.add(waiter);
-		
+
 		conditionLock.release();
-		waiter.acquire();
+
 		conditionLock.acquire();
 	}
 
@@ -47,9 +43,6 @@ public class Condition2 {
 	 */
 	public void wake() {
 		Lib.assertTrue(conditionLock.isHeldByCurrentThread());
-		
-		if (!waitQueue.isEmpty())
-			((Lock) waitQueue.removeFirst()).release();
 	}
 
 	/**
@@ -58,15 +51,7 @@ public class Condition2 {
 	 */
 	public void wakeAll() {
 		Lib.assertTrue(conditionLock.isHeldByCurrentThread());
-		
-		while (!waitQueue.isEmpty())
-			wake();
 	}
 
-	public static void selfTest() {
-        Condition2Test.runTest();
-    }
-    
 	private Lock conditionLock;
-	private LinkedList<Lock> waitQueue;
 }

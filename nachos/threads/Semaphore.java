@@ -39,7 +39,6 @@ public class Semaphore {
 
 		if (value == 0) {
 			waitQueue.waitForAccess(KThread.currentThread());
-			System.out.println(KThread.currentThread().toString());
 			KThread.sleep();
 		}
 		else {
